@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PODSP — All Black Collection</title>
+  <meta name="description" content="Landing page all black premium para vitrine de pods com carrossel horizontal e foco total no produto." />
+  <style>
+    :root{
+      --black:#020202;
+      --black2:#080808;
+      --panel:#0d0d0f;
+      --line:rgba(255,255,255,.095);
+      --soft:rgba(255,255,255,.045);
+      --text:#f8f8f8;
+      --muted:#8f9097;
+      --muted2:#c4c4c9;
+      --white:#ffffff;
+      --orange:#ff6a00;
+      --amber:#ffb000;
+      --red:#ff2d16;
+      --radius:34px;
+      --shadow:0 42px 120px rgba(0,0,0,.82);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      background:var(--black);
+      color:var(--text);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI",sans-serif;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-5;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(255,106,0,.18), transparent 30%),
+        radial-gradient(circle at 85% 18%, rgba(255,45,22,.09), transparent 25%),
+        radial-gradient(circle at 15% 75%, rgba(255,176,0,.07), transparent 25%),
+        linear-gradient(180deg,#030303 0%,#000 48%,#050505 100%);
+    }
+    .grain{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.085;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
+    .aura{position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden}
+    .aura span{position:absolute;border-radius:999px;filter:blur(54px);opacity:.28;animation:drift 13s ease-in-out infinite alternate}
+    .aura span:nth-child(1){width:430px;height:180px;left:-110px;top:15vh;background:rgba(255,106,0,.42)}
+    .aura span:nth-child(2){width:360px;height:160px;right:-90px;top:38vh;background:rgba(255,45,22,.34);animation-delay:-4s}
+    .aura span:nth-child(3){width:460px;height:140px;left:34%;bottom:-40px;background:rgba(255,176,0,.22);animation-delay:-8s}
+    @keyframes drift{from{transform:translate3d(-3%,2%,0) scale(1)}to{transform:translate3d(5%,-4%,0) scale(1.15)}}
+    .smoke{position:fixed;left:-8%;right:-8%;bottom:-18%;height:62vh;z-index:-2;pointer-events:none;opacity:.28;filter:blur(34px);background:radial-gradient(ellipse at 18% 45%,rgba(255,255,255,.22),transparent 30%),radial-gradient(ellipse at 50% 35%,rgba(255,106,0,.25),transparent 34%),radial-gradient(ellipse at 78% 50%,rgba(255,255,255,.14),transparent 28%);animation:smoke 18s ease-in-out infinite alternate}
+    @keyframes smoke{to{transform:translate3d(3%,-5%,0) scale(1.12)}}
+    a{text-decoration:none;color:inherit}
+    button,input{font:inherit}
+    .wrap{width:min(1340px,calc(100% - 34px));margin-inline:auto}
+
+    .agegate{position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:22px;background:rgba(0,0,0,.78);backdrop-filter:blur(24px)}
+    .agebox{width:min(520px,100%);border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border-radius:34px;box-shadow:var(--shadow);padding:30px;text-align:center;position:relative;overflow:hidden}
+    .agebox:before{content:"";position:absolute;inset:-2px;background:radial-gradient(circle at 50% 0,rgba(255,106,0,.35),transparent 45%);pointer-events:none}.agebox>*{position:relative}
+    .agebox h2{font-size:34px;letter-spacing:-.05em;margin:0 0 10px}.agebox p{color:var(--muted2);line-height:1.6;margin:0 0 20px}.agebox small{display:block;color:#8d8d92;line-height:1.5;margin-top:14px}
+
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:13px;font-weight:950;letter-spacing:.18em}.brandmark{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.16);background:radial-gradient(circle at 50% 28%,#1a1a1d,#050505 65%);box-shadow:0 0 0 8px rgba(255,255,255,.018),0 0 42px rgba(255,106,0,.2)}
+    .brandmark:before{content:"P";font-weight:950;letter-spacing:-.08em;color:#fff;text-shadow:0 0 22px rgba(255,106,0,.75)}
+    .nav-meta{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.18em}.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 18px var(--orange)}
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border-radius:999px;border:1px solid rgba(255,106,0,.36);background:linear-gradient(135deg,#ff6a00,#ffb000);color:#080808;font-weight:950;box-shadow:0 18px 58px rgba(255,106,0,.24), inset 0 1px 0 rgba(255,255,255,.55);cursor:pointer}
+    .ghost{background:rgba(255,255,255,.035);color:#fff;border-color:var(--line);box-shadow:none}
+
+    header{min-height:calc(100vh - 82px);display:grid;align-items:center;padding:46px 0 36px;position:relative}
+    .hero{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:28px;align-items:center}
+    .copy{position:relative;z-index:3}.kicker{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:10px 13px;color:var(--muted2);font-size:12px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:26px}.kicker b{color:#fff}
+    h1{font-size:clamp(56px,9.6vw,142px);line-height:.78;letter-spacing:-.09em;margin:0 0 20px;font-weight:1000}.h1-soft{display:block;color:#505058}.h1-hot{background:linear-gradient(92deg,#fff 0%,#bbb 32%,#ff6a00 68%,#ffb000 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 22px 80px rgba(255,106,0,.16)}
+    .lead{max-width:560px;color:#b7b7bd;font-size:clamp(16px,1.55vw,20px);line-height:1.6;margin:0 0 28px}.actions{display:flex;gap:12px;flex-wrap:wrap}.micro{margin-top:18px;color:#74747b;font-size:12px;line-height:1.5;max-width:540px}
+
+    .hero-stage{min-height:620px;position:relative;display:grid;place-items:center;overflow:hidden;border-radius:48px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));box-shadow:var(--shadow)}
+    .orbit{position:absolute;width:min(54vw,690px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.075);box-shadow:inset 0 0 70px rgba(255,106,0,.06),0 0 130px rgba(255,106,0,.09);animation:spin 22s linear infinite}.orbit:before,.orbit:after{content:"";position:absolute;border-radius:50%;inset:10%;border:1px solid rgba(255,106,0,.12)}.orbit:after{inset:24%;border-color:rgba(255,255,255,.06)}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .center-icon{position:relative;z-index:2;width:clamp(250px,31vw,410px);aspect-ratio:.58;border-radius:46px;background:linear-gradient(145deg,#1d1d21 0%,#080808 36%,#0f0f12 60%,#2a292d 100%);box-shadow:inset 18px 20px 46px rgba(255,255,255,.11),inset -20px -24px 42px rgba(0,0,0,.92),0 42px 130px rgba(0,0,0,.85),0 0 80px rgba(255,106,0,.16);transform:rotate(-4deg);animation:heroFloat 5.8s ease-in-out infinite;display:grid;place-items:center;overflow:hidden}
+    .center-icon:before{content:"PODSP";position:absolute;top:38px;left:30px;font-size:clamp(31px,4vw,56px);font-weight:1000;letter-spacing:-.1em;background:linear-gradient(180deg,#fff,#777);-webkit-background-clip:text;color:transparent}.center-icon:after{content:"ALL BLACK";position:absolute;bottom:35px;left:31px;right:31px;height:118px;border-radius:28px;background:linear-gradient(135deg,rgba(255,106,0,.22),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.12);display:grid;place-items:center;color:#fff;font-size:14px;font-weight:900;letter-spacing:.18em}.vertical-glow{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent);width:44%;transform:translateX(-130%);animation:shine 4.4s ease-in-out infinite}
+    @keyframes heroFloat{50%{transform:rotate(2deg) translateY(-18px) scale(1.02)}}@keyframes shine{45%,100%{transform:translateX(260%)}}
+    .stage-label{position:absolute;left:24px;bottom:22px;color:#6f6f76;font-size:12px;letter-spacing:.18em;text-transform:uppercase}.stage-label b{color:#fff}
+
+    .section-top{display:flex;align-items:end;justify-content:space-between;gap:22px;margin:20px 0 24px}.section-top h2{font-size:clamp(34px,5.4vw,80px);line-height:.88;letter-spacing:-.075em;margin:0}.section-top p{margin:0;color:var(--muted);max-width:470px;line-height:1.55}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:18px}.chip,.search{border:1px solid var(--line);background:rgba(255,255,255,.033);color:#d8d8dd;border-radius:999px;padding:11px 14px;font-size:13px}.chip{cursor:pointer}.chip.active{color:#080808;background:linear-gradient(135deg,#ff6a00,#ffb000);border-color:transparent;font-weight:950}.search{outline:0;min-width:min(420px,100%)}
+
+    .carousel-wrap{position:relative;margin:10px calc((100vw - min(1340px,calc(100vw - 34px))) / -2) 0;padding:40px 0 54px;overflow:hidden}.carousel-wrap:before,.carousel-wrap:after{content:"";position:absolute;top:0;bottom:0;width:15vw;z-index:4;pointer-events:none}.carousel-wrap:before{left:0;background:linear-gradient(90deg,#020202,transparent)}.carousel-wrap:after{right:0;background:linear-gradient(-90deg,#020202,transparent)}
+    .track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:28px max(17px,calc((100vw - 1340px)/2 + 17px));scrollbar-width:none;cursor:grab}.track::-webkit-scrollbar{display:none}.track:active{cursor:grabbing}
+    .pod-card{scroll-snap-align:center;flex:0 0 clamp(245px,24vw,340px);height:480px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border-radius:42px;position:relative;overflow:hidden;transform:scale(.88);opacity:.48;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s,filter .45s,border-color .45s;filter:saturate(.62) brightness(.74);box-shadow:0 28px 80px rgba(0,0,0,.45)}
+    .pod-card.active{transform:scale(1.05) translateY(-14px);opacity:1;filter:saturate(1.05) brightness(1);border-color:rgba(255,106,0,.38);box-shadow:0 48px 130px rgba(0,0,0,.85),0 0 90px rgba(255,106,0,.16)}
+    .pod-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 10%,rgba(255,106,0,.25),transparent 35%),linear-gradient(135deg,rgba(255,255,255,.08),transparent 42%);opacity:.72}.pod-card.active:before{opacity:1}.pod-card>*{position:relative}
+    .product-img{position:absolute;left:50%;top:42%;translate:-50% -50%;width:42%;height:61%;border-radius:32px;background:linear-gradient(145deg,#24242a,#030303 48%,#151519);box-shadow:inset 14px 18px 32px rgba(255,255,255,.11),inset -16px -18px 28px rgba(0,0,0,.9),0 35px 80px rgba(0,0,0,.72);display:grid;place-items:center;overflow:hidden}.product-img img{width:100%;height:100%;object-fit:contain}.product-img .placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:18px;color:#fff;font-weight:1000;letter-spacing:-.08em;font-size:26px;background:linear-gradient(180deg,transparent,rgba(255,106,0,.13))}.product-img .placeholder small{display:block;font-size:10px;letter-spacing:.18em;margin-top:6px;color:#aaa}.product-img:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:translateX(-140%);animation:shine 6s ease-in-out infinite}
+    .cap{position:absolute;top:18px;left:18px;border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:8px 10px;color:#0a0a0a;background:linear-gradient(135deg,#ff6a00,#ffb000);font-size:12px;font-weight:1000}.brandname{position:absolute;top:20px;right:20px;color:#8c8c93;text-transform:uppercase;letter-spacing:.16em;font-size:10px}.pod-info{position:absolute;left:22px;right:22px;bottom:22px}.pod-info h3{font-size:23px;line-height:1;letter-spacing:-.055em;margin:0 0 10px}.pod-info p{margin:0;color:#a9a9af;font-size:13px;line-height:1.45;min-height:54px}.pod-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px}.count{color:#777;font-size:12px}.mini-cta{color:#fff;font-weight:950;border-bottom:1px solid rgba(255,106,0,.85)}
+    .center-readout{width:min(660px,calc(100% - 34px));margin:0 auto 28px;border:1px solid rgba(255,106,0,.18);background:rgba(255,255,255,.035);backdrop-filter:blur(18px);border-radius:28px;padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;box-shadow:0 22px 80px rgba(0,0,0,.45)}.center-readout strong{display:block;font-size:24px;letter-spacing:-.04em}.center-readout span{display:block;color:#8d8d94;font-size:13px;margin-top:4px}.arrows{display:flex;gap:8px}.arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#0b0b0d;color:#fff;cursor:pointer}.arrow:hover{border-color:rgba(255,106,0,.45)}
+    .bottom-bar{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;border-top:1px solid var(--line);padding:26px 0 42px;color:#85858b}.bottom-bar b{color:#fff}.legal{font-size:12px;line-height:1.55}.sticky-mobile{display:none;position:fixed;left:14px;right:14px;bottom:14px;z-index:20}.sticky-mobile .cta{width:100%;box-shadow:0 22px 60px rgba(255,106,0,.34)}
+
+    @media(max-width:900px){.nav-meta{display:none}.hero{grid-template-columns:1fr}.copy{order:2}.hero-stage{order:1;min-height:470px;border-radius:36px}.center-icon{width:230px}.orbit{width:430px}.section-top{display:block}.section-top p{margin-top:14px}.pod-card{height:430px;flex-basis:74vw}.center-readout{grid-template-columns:1fr}.bottom-bar{grid-template-columns:1fr;padding-bottom:90px}.sticky-mobile{display:block}h1{font-size:clamp(62px,17vw,118px)}}
+    @media(max-width:520px){.wrap{width:calc(100% - 26px)}.nav{height:72px}.brand{letter-spacing:.1em}.brandmark{width:40px;height:40px}.nav .cta{display:none}.hero-stage{min-height:420px}.pod-card{flex-basis:80vw}.product-img{width:45%;height:58%}.chip,.search{font-size:12px}.carousel-wrap{padding-top:20px}.center-readout strong{font-size:20px}}
+  </style>
+</head>
+<body>
+  <div class="grain"></div><div class="aura"><span></span><span></span><span></span></div><div class="smoke"></div>
+  <div class="agegate" id="agegate">
+    <div class="agebox">
+      <h2>PODSP</h2>
+      <p>Experiência restrita a adultos. Acesse apenas se você tem idade legal e está em uma região onde visualização, comercialização e divulgação desse tipo de produto são permitidas.</p>
+      <button class="cta" id="enterBtn">Tenho idade legal</button>
+      <small>Produtos podem conter nicotina. Não destinado a menores. Ajuste este aviso conforme a legislação local.</small>
+    </div>
+  </div>
+
+  <nav class="wrap nav">
+    <a class="brand" href="#"><span class="brandmark"></span><span>PODSP</span></a>
+    <div class="nav-meta"><span class="dot"></span><span>all black drop</span><span>curadoria premium</span></div>
+    <a class="cta" href="#colecao">Ver coleção</a>
+  </nav>
+
+  <header class="wrap">
+    <div class="hero">
+      <div class="copy">
+        <div class="kicker"><span class="dot"></span><b>PODSP</b> / coleção privada</div>
+        <h1><span class="h1-hot">ALL</span><span class="h1-soft">BLACK</span></h1>
+        <p class="lead">Uma vitrine escura, limpa e cinematográfica. Sem ruído. Sem excesso. Apenas modelos em destaque, deslizando como uma coleção premium.</p>
+        <div class="actions">
+          <a class="cta" href="#colecao">Explorar modelos</a>
+          <a class="cta ghost" href="https://wa.me/5500000000000?text=Olá,%20quero%20consultar%20a%20coleção%20PODSP.">Consultar disponibilidade</a>
+        </div>
+        <p class="micro">Substitua o mockup central e os placeholders do carrossel pelas fotos reais dos produtos. O layout já está preparado para PNG com fundo transparente.</p>
+      </div>
+      <div class="hero-stage" aria-label="Produto central PODSP">
+        <div class="orbit"></div>
+        <div class="center-icon"><span class="vertical-glow"></span></div>
+        <div class="stage-label"><b>ícone central</b> • maior • elegante • rotativo</div>
+      </div>
+    </div>
+  </header>
+
+  <main id="colecao" class="wrap">
+    <div class="section-top">
+      <h2>Modelos em<br>movimento.</h2>
+      <p>O produto central salta levemente quando entra no foco. Use o scroll horizontal, as setas ou deixe o carrossel correr sozinho.</p>
+    </div>
+    <div class="toolbar" id="filters"></div>
+    <div class="toolbar"><input id="search" class="search" placeholder="Buscar por marca, modelo ou sabor: mint, grape, watermelon..." /></div>
+  </main>
+
+  <section class="carousel-wrap" aria-label="Carrossel de produtos">
+    <div class="track" id="track"></div>
+  </section>
+
+  <div class="center-readout" id="readout">
+    <div><strong>Selecione um modelo</strong><span>Arraste o carrossel para destacar o produto.</span></div>
+    <div class="arrows"><button class="arrow" id="prev" aria-label="Anterior">‹</button><button class="arrow" id="next" aria-label="Próximo">›</button></div>
+  </div>
+
+  <footer class="wrap bottom-bar">
+    <div class="legal"><b>PODSP</b> — landing page all black de vitrine adulta. Venda, publicidade ou distribuição devem ocorrer somente onde forem legalmente permitidas. Não destinado a menores.</div>
+    <a class="cta" href="https://wa.me/5500000000000?text=Olá,%20quero%20consultar%20os%20modelos%20PODSP.">Chamar no WhatsApp</a>
+  </footer>
+  <div class="sticky-mobile"><a class="cta" href="https://wa.me/5500000000000?text=Olá,%20quero%20consultar%20os%20modelos%20PODSP.">Consultar PODSP</a></div>
+
+  <script>
+    const WHATSAPP = '5500000000000';
+    const products = [
+      {brand:'Adalya',model:'ADALYA ICE NIC AD 50K',cap:'50K',img:'',flavors:['AFRICAN CRUSH','BLUE ICE','FRUITY SMOOTHIE','HAWAII','ICE BOMBOM','PUNKMAN','VERRY BERRY']},
+      {brand:'Black Sheep',model:'BLACK SHEEP 30K',cap:'30K',img:'',flavors:['CHERRY RASP / WATERMELON','FRESH MINT / GRAPE','FRESH MINT / WATERMELON','GRAPE / PASSION FRUIT','GRAPE / STRAW KIWI','GRAPE / STRAWNANA','GRAPE / WATER BUBBLE GUM','MENTHOL / FRESH MINT','MENTHOL / MANGO PEACH WA','MENTHOL / WATERMELON GRE','SOUR GREEN / BLUEBERRY','STRAW BUBBLE / SOUR PINE','STRAWNANA / PINE COCONUT','WATER BUBBLE / MANGO PEA']},
+      {brand:'Black Sheep',model:'BLACK SHEEP 40K',cap:'40K',img:'',flavors:['BLUEBERRY BUBUBBLE GUM / SOUR GREEN APPLE','BLUEBERRY GRAPE / CHERRY BERRY','FRESH MINT / MANGO ORANGE','GRAPE / GRAPE MANGO','GRAPE / MENTHOL','GRAPE / MONSTER ENERGY','GRAPE MANGO / FRESH MINT','STRAWBERRY KIWI / COLA LIME','STRAWBERRY KIWI / FRESH MINT']},
+      {brand:'Elf Bar',model:'ELF BAR BC 15K',cap:'15K',img:'',flavors:['AMERICANO ICE','HAWAI POPSICLE']},
+      {brand:'Elf Bar',model:'ELF BAR ICE KING 40K',cap:'40K',img:'',flavors:['BAJA SPLASH','BLACK MINT','COLA SLUSH','DRAGON STRAWNANA','GREEN APPLE SLUSH','HAWAIIAN SLUSH','NEON TWIST','PASSION FLASH','PEACH BLUE SLUSH','STRAWBERRY ICE','STRAWBERRY SPARK','STRAWBERRY WATERMEL','TRIPLE BERRY','WATERMELON ICE','WILD BERRY']},
+      {brand:'Elf Bar',model:'ELF BAR JOINONE ICE KIT 25K',cap:'25K',img:'',flavors:['BLUE RAZZ ICE','COOL MINT','GRAPE ICE','GRAPE RASPBERRY','GREEN APPLE ICE','KIWI PASSION FRUIT GUAVA','MANGO PEACH WATERMELON','SOUR STRAWBERRY DRAGON FRUIT','STRAWBERRY ICE','WATERMELON ICE']},
+      {brand:'Elf Bar',model:'ELF BAR RABBEATS RC 50K',cap:'50K',img:'',flavors:['GREEN APPLE ICE','ICY MINT','MIAMI MINT','SAKURA GRAPE','TRIPLE BERRY','WATERMELON ICE']},
+      {brand:'Elf Bar',model:'ELF BAR TE 30K',cap:'30K',img:'',flavors:['AMERICANO ICE','GREEN APPLE LEMON']},
+      {brand:'Elf Bar',model:'ELF BAR TRIO 40K',cap:'40K',img:'',flavors:['BLACK MINT','BLUE RAZZ ICE','BLUEBERRY POM SLUSHY','COOL MENTHOL','LA GRAPE','ORANGE BLAST','PEACH TWIST','PINEAPPLE LIME','POMEGRANATE BLAST','RASPBERRY WATERMELON','SAKURA GRAPE','SCARY BERRY','SOUR APPLE ICE','SOUR STRAWBERRY DRAGON','STRAWBERRY LIME ORANGE','WATERMELON ICE']},
+      {brand:'Ignite',model:'IGNITE V15',cap:'V15',img:'',flavors:['CUCUMBER ICE','ORANGE ICE','RASPBERRY ORANGE ICE','TABACCO']},
+      {brand:'Ignite',model:'IGNITE V155 ULTRA SLIM',cap:'ULTRA',img:'',flavors:['WATERMELON MIX']},
+      {brand:'Ignite',model:'IGNITE V400 V-MIX',cap:'V400',img:'',flavors:['ALOE GRAPE+STRAW WATER','APPLE ICE+STRAW WATER','BANANA ICE+STRAWB ICE','GRAPE ICE+STRAWBERRY','ICY MINT+PEACH GRAPE','MENTHOL+MINT MELON','STRAW MANGO+BANANA ICE','WATERMELON+GRAPE ICE']},
+      {brand:'Life Pod',model:'LIFE POD CARTUCHO 8K ECO',cap:'8K',img:'',flavors:['CARAMEL COFFEE','LEMON MINT','MANGO ICE','STRAW BANANA','TROPICAL ICE','WATERMELON GUMM']},
+      {brand:'Life Pod',model:'LIFE POD KIT 10K',cap:'10K',img:'',flavors:['TOBBACO VIRGINIA']},
+      {brand:'Lost Mary',model:'LOST MARY DURA 35K',cap:'35K',img:'',flavors:['GRAPE FRUIT PASSION','GRAPE ICE','GRREEN APPLE ICE','HAWAIAN JUICE','HAWAIAN MINT','MENTHOL','MIAMI MINT','POMEGRANATE CHERRY PINEAPPLE','STRAWBERRY ICE','STRAWBERRY KIWI','STRAWBERRY WATERMELON','SUMMER ORANGE','WATERMELON ICE']},
+      {brand:'Nuvia',model:'NUVIA CARTUCHO',cap:'CARTUCHO',img:'',flavors:['CAFE TOBACCO','ICE BLAST','MENTHOL TOBACCO','RICH TOBACCO','SMOOTH TOBACCO','VIRGINIA TOBACCO']},
+      {brand:'Nuvia',model:'NUVIA KIT',cap:'KIT',img:'',flavors:['BROWN + MENTHOL TOBACCO','GREY + VIRGINIA TOBACCO','WHITE + RICH TOBACCO']}
+    ];
+
+    const track = document.getElementById('track');
+    const filters = document.getElementById('filters');
+    const search = document.getElementById('search');
+    const readout = document.getElementById('readout');
+    const brands = ['Todos', ...new Set(products.map(p => p.brand))];
+    let activeBrand = 'Todos';
+    let currentData = [];
+    let autoTimer;
+
+    function renderFilters(){
+      filters.innerHTML = brands.map(b => `<button class="chip ${b===activeBrand?'active':''}" data-brand="${b}">${b}</button>`).join('');
+      filters.querySelectorAll('.chip').forEach(btn=>btn.onclick=()=>{activeBrand=btn.dataset.brand; render();});
+    }
+
+    function cardHTML(p, i){
+      const flavorText = p.flavors.slice(0,4).join(' • ') + (p.flavors.length>4?' • + opções':'');
+      const img = p.img ? `<img src="${p.img}" alt="${p.model}">` : `<span class="placeholder">${p.brand.split(' ')[0]}<small>INSERIR FOTO</small></span>`;
+      const msg = encodeURIComponent(`Olá, quero consultar disponibilidade do ${p.model}.`);
+      return `<article class="pod-card" data-index="${i}">
+        <span class="cap">${p.cap}</span><span class="brandname">${p.brand}</span>
+        <div class="product-img">${img}</div>
+        <div class="pod-info"><h3>${p.model}</h3><p>${flavorText}</p><div class="pod-actions"><span class="count">${p.flavors.length} sabores</span><a class="mini-cta" href="https://wa.me/${WHATSAPP}?text=${msg}">consultar</a></div></div>
+      </article>`;
+    }
+
+    function render(){
+      renderFilters();
+      const q = (search.value || '').toLowerCase().trim();
+      currentData = products.filter(p => (activeBrand==='Todos' || p.brand===activeBrand) && `${p.brand} ${p.model} ${p.flavors.join(' ')}`.toLowerCase().includes(q));
+      track.innerHTML = currentData.map(cardHTML).join('') || '<p style="padding:60px;color:#888">Nenhum modelo encontrado.</p>';
+      requestAnimationFrame(()=>{highlightCenter(); centerFirst();});
+      restartAuto();
+    }
+
+    function centerFirst(){
+      const first = track.querySelector('.pod-card');
+      if(first) first.scrollIntoView({inline:'center',block:'nearest'});
+    }
+
+    function highlightCenter(){
+      const cards = [...track.querySelectorAll('.pod-card')];
+      if(!cards.length) return;
+      const center = track.scrollLeft + track.clientWidth/2;
+      let best = cards[0], bestDist = Infinity;
+      cards.forEach(card => {
+        const cardCenter = card.offsetLeft + card.offsetWidth/2;
+        const dist = Math.abs(center - cardCenter);
+        if(dist < bestDist){bestDist = dist; best = card;}
+        card.classList.remove('active');
+      });
+      best.classList.add('active');
+      const p = currentData[Number(best.dataset.index)];
+      if(p){
+        readout.querySelector('strong').textContent = p.model;
+        readout.querySelector('span').textContent = `${p.brand} • ${p.cap} • ${p.flavors.length} variações disponíveis`;
+      }
+    }
+
+    function scrollStep(dir){
+      const card = track.querySelector('.pod-card');
+      if(!card) return;
+      track.scrollBy({left:dir*(card.offsetWidth+22),behavior:'smooth'});
+      restartAuto();
+    }
+
+    function restartAuto(){
+      clearInterval(autoTimer);
+      autoTimer = setInterval(()=>{
+        const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 80;
+        if(nearEnd) track.scrollTo({left:0,behavior:'smooth'}); else scrollStep(1);
+      }, 3600);
+    }
+
+    let scrollDebounce;
+    track.addEventListener('scroll',()=>{highlightCenter(); clearTimeout(scrollDebounce); scrollDebounce=setTimeout(()=>highlightCenter(),80);});
+    track.addEventListener('mouseenter',()=>clearInterval(autoTimer));
+    track.addEventListener('mouseleave',restartAuto);
+    document.getElementById('prev').onclick=()=>scrollStep(-1);
+    document.getElementById('next').onclick=()=>scrollStep(1);
+    search.addEventListener('input',render);
+
+    document.getElementById('enterBtn').onclick=()=>{localStorage.setItem('podsp-age-ok','1');document.getElementById('agegate').style.display='none'};
+    if(localStorage.getItem('podsp-age-ok')==='1') document.getElementById('agegate').style.display='none';
+    render();
+  </script>
+</body>
+</html>
