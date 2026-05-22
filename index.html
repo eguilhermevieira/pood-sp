@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PodSp — Dark Selection</title>
+  <meta name="description" content="Catálogo premium PodSp com seleção discreta de modelos disponíveis e pedido via WhatsApp." />
+  <meta name="theme-color" content="#050505" />
+  <meta property="og:title" content="PodSp — Dark Selection" />
+  <meta property="og:description" content="Escolha seu modelo, confira os sabores e envie o resumo pelo WhatsApp." />
+  <meta property="og:image" content="assets/podsp-logo.png" />
+  <link rel="preload" as="image" href="assets/podsp-logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="age-card">
+      <img src="assets/podsp-logo.png" alt="PodSp" class="age-logo" />
+      <p class="eyebrow">ACESSO RESTRITO</p>
+      <h1 id="ageTitle">Você confirma ser maior de idade?</h1>
+      <p>Este catálogo é destinado apenas a adultos, em locais onde a compra e venda seja permitida por lei.</p>
+      <div class="age-actions">
+        <button class="btn primary" id="confirmAge">Sim, continuar</button>
+        <button class="btn ghost" id="denyAge">Sair</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="shell">
+    <div class="noise"></div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+
+    <header class="topbar">
+      <a href="#" class="brand" aria-label="PodSp início">
+        <img src="assets/podsp-logo.png" alt="PodSp" />
+      </a>
+      <nav class="nav">
+        <a href="#collection">Coleção</a>
+        <a href="#how">Como pedir</a>
+        <button class="btn small" data-open-catalog>Consultar</button>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">DARK SELECTION · PODSP</p>
+        <h1>O catálogo discreto para escolher rápido.</h1>
+        <p class="lead">Visual all black, seleção por modelo e sabor. Monte uma consulta limpa e envie o resumo direto no WhatsApp.</p>
+        <div class="hero-actions">
+          <button class="btn primary" data-open-catalog>Fazer consulta</button>
+          <a class="btn ghost" href="#collection">Ver modelos</a>
+        </div>
+      </div>
+
+      <div class="hero-logo-stage" aria-label="Logo PodSp em destaque">
+        <img src="assets/podsp-logo.png" alt="Logo PodSp" class="hero-logo" />
+        <span class="scanline"></span>
+      </div>
+    </section>
+
+    <section class="ticker-wrap" aria-label="Marcas disponíveis">
+      <div class="ticker" id="brandTicker"></div>
+    </section>
+
+    <section class="collection" id="collection">
+      <div class="section-head">
+        <p class="eyebrow">COLEÇÃO</p>
+        <h2>Modelos no centro. Sem ruído.</h2>
+        <button class="btn small" data-open-catalog>Escolher no catálogo</button>
+      </div>
+
+      <div class="brand-filter" id="brandFilter"></div>
+
+      <div class="carousel-zone">
+        <button class="arrow" id="prevCard" aria-label="Anterior">‹</button>
+        <div class="product-rail" id="productRail" tabindex="0" aria-label="Carrossel de produtos"></div>
+        <button class="arrow" id="nextCard" aria-label="Próximo">›</button>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <div class="how-card">
+        <span>01</span>
+        <h3>Abra o catálogo</h3>
+        <p>Filtre por marca, busque o sabor e selecione os modelos de interesse.</p>
+      </div>
+      <div class="how-card active">
+        <span>02</span>
+        <h3>Monte o resumo</h3>
+        <p>A página organiza sua consulta com modelo, sabor e quantidade.</p>
+      </div>
+      <div class="how-card">
+        <span>03</span>
+        <h3>Envie no WhatsApp</h3>
+        <p>O atendimento recebe tudo pronto para confirmar disponibilidade.</p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <img src="assets/podsp-logo.png" alt="PodSp" />
+      <div>
+        <p class="eyebrow">CONSULTA DIRETA</p>
+        <h2>Escolha. Confira. Envie.</h2>
+      </div>
+      <button class="btn primary" data-open-catalog>Iniciar pedido</button>
+    </section>
+
+    <footer>
+      <p>PodSp · Catálogo privado para adultos. Consulta de disponibilidade diretamente pelo atendimento.</p>
+      <p>Use apenas onde a comercialização seja legalmente permitida. Não há venda para menores.</p>
+    </footer>
+  </main>
+
+  <dialog class="catalog-modal" id="catalogModal" aria-labelledby="catalogTitle">
+    <div class="modal-shell">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">CATÁLOGO DISCRETO</p>
+          <h2 id="catalogTitle">Monte sua consulta</h2>
+        </div>
+        <button class="icon-btn" id="closeCatalog" aria-label="Fechar catálogo">×</button>
+      </div>
+
+      <div class="catalog-tools">
+        <input id="searchInput" type="search" placeholder="Buscar modelo ou sabor..." autocomplete="off" />
+        <select id="brandSelect" aria-label="Filtrar por marca"></select>
+      </div>
+
+      <div class="catalog-body">
+        <div class="mini-list" id="catalogList"></div>
+        <aside class="summary-panel">
+          <h3>Resumo</h3>
+          <div id="summaryEmpty" class="empty">Nenhum item selecionado.</div>
+          <div id="summaryList" class="summary-list"></div>
+          <textarea id="customerNote" placeholder="Observação opcional: bairro, horário, dúvida..."></textarea>
+          <button class="btn primary full" id="sendWhatsapp">Enviar resumo no WhatsApp</button>
+          <button class="btn ghost full" id="clearSummary">Limpar seleção</button>
+        </aside>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
